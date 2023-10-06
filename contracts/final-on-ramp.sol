@@ -48,20 +48,20 @@ contract OnRampData is
         totalTransactionCount = 0;
     }
 
-    event upgradePassTypeInitiation(
+    event UpgradePassTypeInitiation(
         string indexed userId,
         address walletAddress,
         string passType,
         uint256 timestamp,
         uint256 passAmount
     );
-    event updatePurchasePassCreated(
+    event UpdatePurchasePassCreated(
         string indexed userId,
         address walletAddress,
         string paymentType,
         uint256 fiatTimeStamp
     );
-    event updatePassTransactionStatus(
+    event UpdatePassTransactionStatus(
         string indexed userId,
         address walletAddress,
         uint256 passAmount,
@@ -105,7 +105,7 @@ contract OnRampData is
         userTransactions[walletAddress].push(userId);
         incrementTotalTransactionCount(); //increaments the count when function is triggered
 
-        emit upgradePassTypeInitiation(
+        emit UpgradePassTypeInitiation(
             userId,
             walletAddress,
             passType,
@@ -146,7 +146,7 @@ contract OnRampData is
         uint256 fiatTimeStamp = block.timestamp;
         userTransactions[walletAddress].push(userId);
 
-        emit updatePurchasePassCreated(
+        emit UpdatePurchasePassCreated(
             userId,
             walletAddress,
             paymentType,
@@ -197,7 +197,7 @@ contract OnRampData is
         data.status = status;
         userTransactions[walletAddress].push(userId);
 
-        emit updatePassTransactionStatus(
+        emit UpdatePassTransactionStatus(
             userId,
             walletAddress,
             passAmount,
